@@ -20,8 +20,19 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        getData()
+        //getData()
+        
+        var a = 4
+        var b = "Hello"
+        
+        testClosures({ a, b in
+            print("closure code \(b) \(a)")
+        }, a, b)
+        
+        
     }
+    
+    // Dispatch Exmple
     
     func getData(){
         let group = DispatchGroup()
@@ -40,7 +51,19 @@ class ViewController: UIViewController {
             self.view.backgroundColor = .brown
         })
     }
+    
+    // Closures Example
+    
+    func testClosures(_ someFunction: (Int, String) -> Void, _ someInt: Int, _ someString: String){
+        print("function code \(someInt) \(someString)")
+        someFunction(someInt, someString)
+    }
 
+    var closure = {
+        (val: Int, val2: String) -> Void in
+        //do something here
+        print("\(val) \(val2)")
+    }
 
 }
 
